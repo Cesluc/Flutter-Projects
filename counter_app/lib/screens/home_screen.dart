@@ -27,6 +27,12 @@ const fontSize30 = TextStyle(fontSize: 30);
           ],
         ),
       ),
+      floatingActionButton: FloatingActionButton(
+        child: const Icon(Icons.mode_of_travel_outlined),
+        onPressed: () {
+          print('Hola Mundo');
+        },
+      ),
     );
   }
 
