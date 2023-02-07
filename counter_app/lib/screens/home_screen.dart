@@ -16,9 +16,11 @@ class HomeScreen extends StatelessWidget{
       ),
       body:  Center(
         child: Column(
+          mainAxisAlignment: MainAxisAlignment.center,
+          crossAxisAlignment: CrossAxisAlignment.center, // sirve para alinear de manera relativa al widget mas grande
           children: const <Widget> [
             Text('Click counter'),
-            Text('0')
+            Text('10')
           ],
         ),
       ),
