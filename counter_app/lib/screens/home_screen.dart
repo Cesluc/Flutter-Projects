@@ -27,6 +27,7 @@ const fontSize30 = TextStyle(fontSize: 30);
           ],
         ),
       ),
+      floatingActionButtonLocation:FloatingActionButtonLocation.startDocked ,
       floatingActionButton: FloatingActionButton(
         child: const Icon(Icons.mode_of_travel_outlined),
         onPressed: () {
