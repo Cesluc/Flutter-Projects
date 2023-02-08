@@ -13,6 +13,22 @@ class CounterScreen extends StatefulWidget{
 class _CounterScreenState extends State<CounterScreen> {
   int counter = 15;
 
+  void increase(){
+    counter++;
+    setState(() {});
+  }
+
+  void decrease(){
+    counter--;
+    setState(() {});
+  }
+
+  void reset(){
+    counter = 0;
+    setState(() {});
+  }
+
+
   @override
   Widget build(BuildContext context) { // build context: sirve para saber el contexto en el que el widget esta siendo construido
 
@@ -36,38 +52,52 @@ class _CounterScreenState extends State<CounterScreen> {
         ),
       ),
       floatingActionButtonLocation:FloatingActionButtonLocation.centerDocked ,
-      floatingActionButton: CustomFloatingActions(),
+      floatingActionButton:  CustomFloatingActions(
+        increaseFn: increase, 
+        decreaseFn: decrease, 
+        resetFn: reset,
+      ),
     );
   }
 }
 
 class CustomFloatingActions extends StatelessWidget {
+
+  final Function increaseFn;
+  final Function decreaseFn;
+  final Function resetFn;
+
   const CustomFloatingActions({
-    super.key,
+    super.key, 
+    required this.increaseFn, 
+    required this.decreaseFn, 
+    required this.resetFn,
   });
 
   @override
   Widget build(BuildContext context) {
     return Row(
       mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-      children: const [
+      children:  [
         FloatingActionButton(
-          child:  Icon(Icons.add),
-          onPressed: null,
+          child:  const Icon(Icons.add),
+          onPressed:()=> increaseFn(),
         ),
 
         // const SizedBox(width: 20),
 
         FloatingActionButton(
-          child: Icon(Icons.restart_alt),
-          onPressed: null,
+          child: const Icon(Icons.restart_alt),
+          onPressed: (){
+            resetFn();
+          },
         ),
 
         // const SizedBox(width: 20),
 
         FloatingActionButton(
-          child:  Icon(Icons.exposure_minus_1_outlined),
-          onPressed: null,
+          child:  const Icon(Icons.exposure_minus_1_outlined),
+          onPressed: ()=> decreaseFn(),
         ),
       ],
     );
