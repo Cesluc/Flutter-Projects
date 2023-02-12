@@ -19,12 +19,12 @@ class CardScreen extends StatelessWidget {
 
           CustomCardType1(),
           SizedBox(height: 10),
-          CustomCardType2(),
+          CustomCardType2(name: 'Un hermoso paisaje', imageUrl: 'https://img.freepik.com/free-vector/nature-scene-with-river-hills-forest-mountain-landscape-flat-cartoon-style-illustration_1150-37326.jpg?w=2000',),
           SizedBox(height: 10),
-          CustomCardType2(),
+          CustomCardType2(name: 'Auroras boreales', imageUrl: 'https://www.tom-archer.com/wp-content/uploads/2018/01/watching_the_northern_lights_with_friends.jpg',),
           SizedBox(height: 10),
-          CustomCardType2(),
-          SizedBox(height: 100),
+          CustomCardType2(imageUrl: 'https://i.pinimg.com/originals/65/b9/a3/65b9a35da077570e74a3cd4b64b419af.jpg',),
+          SizedBox(height: 10),
 
         ],
       )
