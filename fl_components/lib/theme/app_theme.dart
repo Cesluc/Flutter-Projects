@@ -20,8 +20,21 @@ class AppTheme{
 
     textButtonTheme:TextButtonThemeData(
       style: TextButton.styleFrom(foregroundColor: primary),  
-    )
+    ),
+    // FLoatingActionButtons
+    floatingActionButtonTheme: const FloatingActionButtonThemeData(
+      backgroundColor: primary,
+      elevation: 5
+    ),
 
+    // ElevatedButtons
+    elevatedButtonTheme: ElevatedButtonThemeData(
+      style: ElevatedButton.styleFrom(
+            backgroundColor: Colors.indigo,
+            shape: const StadiumBorder(),
+            elevation: 0
+          ),
+    )
 
   );
 
@@ -37,5 +50,7 @@ class AppTheme{
 
     scaffoldBackgroundColor: Colors.black
   );
+
+  
 
 }
