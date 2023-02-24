@@ -8,6 +8,17 @@ class InputsScreen extends StatelessWidget {
   
   @override
   Widget build(BuildContext context) {
+
+    final GlobalKey<FormState> myFormKey = GlobalKey<FormState>();
+
+    final Map <String, String> formValues = {
+      'first_name': 'Cesar',
+      'last_name': 'Lucumi',
+      'email'     :'cesar@google.com',
+      'password'  : '123456',
+      'role'      : 'Admin'
+    };
+
     return  Scaffold(
       appBar: AppBar(
         title: const Text('Inputs y Forms'),
@@ -15,21 +26,42 @@ class InputsScreen extends StatelessWidget {
       body: SingleChildScrollView(
         child: Padding(
           padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 10),
-          child: Column(
-            children: const [
+          child: Form(
+            key: myFormKey,
+            child: Column(
+              children:  [
+          
+                const CustomInputField(labelText:'Nombre',hintText: 'Nombre del usuario',keyboardType: TextInputType.name,),
+                const SizedBox(height: 30,),
+          
+                const CustomInputField(labelText:'Apellido',hintText: 'Apellido del usuario',keyboardType: TextInputType.name,),
+                const SizedBox(height: 30,),
+          
+                const CustomInputField(labelText:'Correo',hintText: 'Correo del usuario',keyboardType: TextInputType.emailAddress,),
+                const SizedBox(height: 30,),
+          
+                const  CustomInputField(labelText:'Contraseña',hintText: 'Contraseña del usuario',keyboardType: TextInputType.emailAddress,obscureText: true,),
+                const SizedBox(height: 30,),
+          
+                ElevatedButton(
+                  onPressed: () {
 
-              CustomInputField(labelText:'Nombre',hintText: 'Nombre del usuario',keyboardType: TextInputType.name,),
-              SizedBox(height: 30,),
+                    FocusScope.of(context).requestFocus(FocusNode());
 
-              CustomInputField(labelText:'Apellido',hintText: 'Apellido del usuario',keyboardType: TextInputType.name,),
-              SizedBox(height: 30,),
-
-              CustomInputField(labelText:'Correo',hintText: 'Correo del usuario',keyboardType: TextInputType.emailAddress,),
-              SizedBox(height: 30,),
-
-              CustomInputField(labelText:'Contraseña',hintText: 'Contraseña del usuario',keyboardType: TextInputType.emailAddress,obscureText: true,),
-              SizedBox(height: 30,),
-            ]
+                    if(!myFormKey.currentState!.validate()){
+                      print("Formulario no valido");
+                      return;
+                    }
+                    // Imprimir valores del formulario
+                    print(formValues);
+                  }, 
+                  child: const SizedBox(
+                    width: double.infinity,
+                    child: Center(child:  Text('Guardar'))
+                  )
+                ),
+              ]
+            ),
           ),
         ),
       )
