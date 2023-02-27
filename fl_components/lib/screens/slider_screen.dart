@@ -12,6 +12,7 @@ class SliderScreen extends StatefulWidget {
 class _SliderScreenState extends State<SliderScreen> {
 
   double _sliderValue = 100;
+  bool _sliderEnabled = true;
 
   @override
   Widget build(BuildContext context) {
@@ -19,34 +20,76 @@ class _SliderScreenState extends State<SliderScreen> {
       appBar: AppBar(
         title: const Text('Slider && Checks'),
       ),
-      body: SingleChildScrollView( // Permite ver la imagen completa
-        child: Column(
-          children: [
+      body: Column(
+        children: [
       
-            Slider.adaptive(
-              min: 20,
-              max: 400,
-              activeColor: AppTheme.primary,
-              // divisions: 10,
-              value: _sliderValue, 
-              onChanged: (value){
-                _sliderValue = value;
-                setState(() {
-                  
-                });
-              }
-            ),
-      
-            Image(
-              image: NetworkImage('https://pbs.twimg.com/profile_images/1455573076016574467/nmol2VFD_400x400.jpg'),
-              fit: BoxFit.contain,
-              width: _sliderValue,
-            ),
+          Slider.adaptive(
+            min: 20,
+            max: 400,
+            activeColor: AppTheme.primary,
+            // divisions: 10,
+            value: _sliderValue, 
+            onChanged: _sliderEnabled
+            ? (value){
+              _sliderValue = value;
+              setState(() {
+                
+              });
+            }
+            :null
+          ),
 
-            const SizedBox( height: 50,)
+
+          // Checkbox(
+          //   value: _sliderEnabled, 
+          //   onChanged: (value){ // Cuando tiene null esta desabilidato por defecto
+          //     _sliderEnabled = value ?? true;
+          //     setState(() {
+                
+          //     });
+          //   }
+          // ),
+
+          // Switch(
+          //   value: _sliderEnabled, 
+          //   onChanged: (value) => setState(() {
+          //     _sliderEnabled = value;
+          //   })
+          // ),
+
+          CheckboxListTile(
+            activeColor: AppTheme.primary,
+            title: const Text('Habilitar Slider'),
+            value: _sliderEnabled, 
+            onChanged: (value) => setState(() {
+              _sliderEnabled = value ?? true;
+            })
+          ),
+
+          SwitchListTile.adaptive(
+            activeColor: AppTheme.primary,
+            title: const Text('Habilitar Slider'),
+            value: _sliderEnabled, 
+            onChanged: (value) => setState(() {
+              _sliderEnabled = value;
+            })
+          ),
+
+          const AboutListTile(),
+
       
-          ],
-        ),
+          Expanded(
+            child: SingleChildScrollView(
+              child: Image(
+                image: NetworkImage('https://www.salvat.com/img/cms/0%20Batman_Build-up_1S2023/figura-batman3.png'),
+                fit: BoxFit.contain,
+                width: _sliderValue,
+              ),
+            ),
+          ),
+
+      
+        ],
       )
     );
   }
