@@ -17,6 +17,7 @@ class AppRoutes {
     MenuOption(route: 'avatar',  name: 'Circle Avatar', screen: const AvatarScreen(), icon: Icons.supervised_user_circle_rounded),
     MenuOption(route: 'animated',  name: 'Animated Avatar', screen: const AnimatedScreen(), icon: Icons.play_circle_outline_rounded),
     MenuOption(route: 'input',  name: 'Text Inputs', screen: const InputsScreen(), icon: Icons.input_rounded),
+    MenuOption(route: 'slider',  name: 'Slider && Checks', screen: const SliderScreen(), icon: Icons.slow_motion_video_outlined),
   ];
 
   static Map<String, Widget Function(BuildContext)> getAppRoutes(){
