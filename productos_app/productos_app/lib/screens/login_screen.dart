@@ -27,7 +27,7 @@ class LoginScreen extends StatelessWidget {
                 const SizedBox(
                   height: 30,
                 ),
-                _LoginForm(),
+                const _LoginForm(),
               ],
             ),
           ),
@@ -55,6 +55,8 @@ class _LoginForm extends StatelessWidget {
     return Container(
       child: Form(
         //TODO: Mantener la referencia al KEY
+        autovalidateMode: AutovalidateMode.onUserInteraction,
+
         child: Column(
           children: [
             TextFormField(
@@ -64,6 +66,14 @@ class _LoginForm extends StatelessWidget {
                   hintText: 'project-r@vipa.com',
                   labelText: 'Email Address',
                   prefixIcon: Icons.alternate_email_sharp),
+              validator: (value) {
+                String pattern =
+                    r'^(([^<>()[\]\\.,;:\s@\"]+(\.[^<>()[\]\\.,;:\s@\"]+)*)|(\".+\"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$';
+                RegExp regExp = RegExp(pattern);
+                return regExp.hasMatch(value ?? '')
+                  ? null
+                  : 'The entered value does not look like an email';
+              },
             ),
             const SizedBox(
               height: 30,
@@ -76,9 +86,15 @@ class _LoginForm extends StatelessWidget {
                   hintText: '********',
                   labelText: 'Password',
                   prefixIcon: Icons.lock_outline),
+              validator: (value) {
+                
+                if ( value != null && value.length >= 8 ) return null;
+                return 'Password must contain at least 8 characters';
+                
+              }
             ),
             const SizedBox(
-              height: 30,
+              height: 40,
             ),
             MaterialButton(
               shape: RoundedRectangleBorder(
