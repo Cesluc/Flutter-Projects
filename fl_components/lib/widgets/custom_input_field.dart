@@ -9,9 +9,10 @@ class CustomInputField extends StatelessWidget {
   final IconData? suffixIcon;
   final TextInputType? keyboardType;
   final bool obscureText;
+  final int? maxLines;
 
   final String formProperty;
-  final Map<String, String> formValues;
+  final Map<String, dynamic> formValues;
 
 
   const CustomInputField({
@@ -24,7 +25,8 @@ class CustomInputField extends StatelessWidget {
     this.keyboardType, 
     this.obscureText=false, 
     required this.formProperty, 
-    required this.formValues,
+    required this.formValues, 
+    this.maxLines,
   });
 
   @override
@@ -33,6 +35,7 @@ class CustomInputField extends StatelessWidget {
       autofocus: false,
       initialValue: '',
       textCapitalization: TextCapitalization.words,
+      maxLines: maxLines,
       keyboardType: keyboardType,
       obscureText: obscureText,
       onChanged:  (value) {

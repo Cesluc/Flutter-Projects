@@ -19,6 +19,8 @@ class AppRoutes {
     MenuOption(route: 'input',  name: 'Text Inputs', screen: const InputsScreen(), icon: Icons.input_rounded),
     MenuOption(route: 'slider',  name: 'Slider && Checks', screen: const SliderScreen(), icon: Icons.slow_motion_video_outlined),
     MenuOption(route: 'listviewbuilder',  name: 'Infinit Scroll & Pull to refresh', screen: const ListViewBuilderScreen(), icon: Icons.build_circle_outlined),
+    MenuOption(route: 'purchase',  name: 'Purchase Form', screen: const BuyScreen(), icon: Icons.shopping_cart_checkout_outlined),
+    MenuOption(route: 'sales',  name: 'Sales Form', screen: const SalesScreen(), icon: Icons.attach_money_outlined),
   ];
 
   static Map<String, Widget Function(BuildContext)> getAppRoutes(){
